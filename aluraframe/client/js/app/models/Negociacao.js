@@ -9,9 +9,9 @@ class Negociacao {
   constructor( quantidade = 1, valor = 0.00 )
   {
     // Definindo as propriedades de Negociacao
-    this._data = new Date();
-    this._quantidade = quantidade;
-    this._valor = valor;
+    this.#data = new Date();
+    this.#quantidade = quantidade;
+    this.#valor = valor;
 
     /* Após criado congela os valores dessa class
     * Podemos ter problema para encapsular desta forma porque freezer é superficie fina.
@@ -27,29 +27,29 @@ class Negociacao {
   * */
   get volume() 
   {
-    return this._quantidade * this._valor;
+    return this.#quantidade * this.#valor;
   }
 
   get data()
   {
     // Retornando uma cópia da data para evitar a manipulação de dada por ações externas
-    return new Date( this._data.getTime() );
+    return new Date( this.#data.getTime() );
   }
   get quantidade()
   {
-    return this._quantidade;
+    return this.#quantidade;
   }
   get valor()
   {
-    return this._valor;
+    return this.#valor;
   }
-
+  
   /*
   * No curso entendi que a classe pode ser facilmente manipulada. Não tem método privado como no php.
   * Então temos que fazer programação defenciva.
   * 
   * Uma coisa que podemos fazer nesse caso é uma convenção. 
   * Se na class esse valor não pode ser auterado então definimos antes do nome um undeline. Exemp. _funcao _variavel
-  * 
+  * \_ na nova convensao agora é com #. Exemp. #funcao #variavel;
   * */
 }
